@@ -1,0 +1,12 @@
+=== Run at 2026-11-02 10:40:17 ===
+Line 7 | Record: S,2004,Bad,-500,1000 | Exception: InvalidBalanceException | Message: Invalid balance -500.0: a balance must be a finite number >= 0
+Line 3 | Record: 1001,W,40000 | Exception: InsufficientBalanceException | Message: Withdrawing 40000.00 from account 1001 exceeds the available balance of 30000.00
+Line 4 | Record: 2001,W,12000 | Exception: MinimumBalanceViolationException | Message: Withdrawing 12000.00 from account 2001 (balance 15000.00) would breach the minimum balance of 5000.00
+Line 7 | Record: 2004,D,100 | Exception: AccountNotFoundException | Message: No account with number 2004 was loaded from input/accounts.txt
+Line 8 | Record: 1002,D,-300 | Exception: InvalidAmountException | Message: Deposit amount must be a finite number greater than zero: -300.0
+=== Run at 2026-11-02 11:00:44 ===
+Line 7 | Record: S,2004,Bad,-500,1000 | Exception: InvalidBalanceException | Message: Invalid balance -500.0: a balance must be a finite number >= 0
+Line 3 | Record: 1001,W,40000 | Exception: InsufficientBalanceException | Message: Withdrawing 40000.00 from account 1001 exceeds the available balance of 30000.00
+Line 4 | Record: 2001,W,12000 | Exception: MinimumBalanceViolationException | Message: Withdrawing 12000.00 from account 2001 (balance 15000.00) would breach the minimum balance of 5000.00
+Line 7 | Record: 2004,D,100 | Exception: AccountNotFoundException | Message: No account with number 2004 was loaded from input/accounts.txt
+Line 8 | Record: 1002,D,-300 | Exception: InvalidAmountException | Message: Deposit amount must be a finite number greater than zero: -300.0

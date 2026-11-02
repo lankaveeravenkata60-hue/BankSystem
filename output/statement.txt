@@ -1,0 +1,42 @@
+==============================================================
+ National Bank - Daily Statement
+ Run at: 2026-11-02 11:00:44
+==============================================================
+
+--- ACCOUNT RECORDS (input/accounts.txt) ---
+[line 2] ACCEPTED: B,1001,Ravi,25000 -> created BankAccount
+[line 3] ACCEPTED: B,1002,Sita,48000 -> created BankAccount
+[line 4] ACCEPTED: S,2001,Anil,15000,5000 -> created SavingsAccount
+[line 5] ACCEPTED: S,2002,Kiran,4800,5000 -> created SavingsAccount
+[line 6] ACCEPTED: S,2003,Meena,9000,2000 -> created SavingsAccount
+[line 7] REJECTED: S,2004,Bad,-500,1000 -> InvalidBalanceException: Invalid balance -500.0: a balance must be a finite number >= 0
+
+--- TRANSACTIONS (input/transactions.txt) ---
+[line 2] ACCEPTED: 1001,D,5000 -> deposited 5000.00, new balance 30000.00
+[line 3] REJECTED: 1001,W,40000 -> InsufficientBalanceException: Withdrawing 40000.00 from account 1001 exceeds the available balance of 30000.00
+[line 4] REJECTED: 2001,W,12000 -> MinimumBalanceViolationException: Withdrawing 12000.00 from account 2001 (balance 15000.00) would breach the minimum balance of 5000.00
+[line 5] ACCEPTED: 2002,D,100 -> deposited 100.00, new balance 4900.00
+[line 6] ACCEPTED: 2003,I,6.5 -> interest quote at 6.50% = 585.00 (balance 9000.00)
+[line 7] REJECTED: 2004,D,100 -> AccountNotFoundException: No account with number 2004 was loaded from input/accounts.txt
+[line 8] REJECTED: 1002,D,-300 -> InvalidAmountException: Deposit amount must be a finite number greater than zero: -300.0
+
+--- CLOSING STATEMENT (interest is calculated on the closing balance, before any penalty) ---
+[BankAccount] AccNo: 1001 | Holder: Ravi | Balance: 30000.00
+    Interest (calculateInterest): 1200.00
+[BankAccount] AccNo: 1002 | Holder: Sita | Balance: 48000.00
+    Interest (calculateInterest): 1920.00
+[SavingsAccount] AccNo: 2001 | Holder: Anil | Balance: 15000.00 | Min Balance: 5000.00
+    Interest (calculateInterest): 825.00
+    Penalty (applyPenalty): 0.00 | Balance after penalty: 15000.00
+[SavingsAccount] AccNo: 2002 | Holder: Kiran | Balance: 4900.00 | Min Balance: 5000.00
+    Interest (calculateInterest): 269.50
+    Penalty (applyPenalty): 100.00 | Balance after penalty: 4800.00
+[SavingsAccount] AccNo: 2003 | Holder: Meena | Balance: 9000.00 | Min Balance: 2000.00
+    Interest (calculateInterest): 495.00
+    Penalty (applyPenalty): 0.00 | Balance after penalty: 9000.00
+
+--- SUMMARY ---
+compareBalance of first two accounts (1001 vs 1002): higher balance is account 1002
+Richest customer (findRichestCustomer): 1002
+Final accountCount: 5
+Records read: 13, accepted: 8, rejected: 5.
